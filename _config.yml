@@ -1,0 +1,55 @@
+# Site wide configuration
+
+title:            Experimental Life
+locale:           en_US
+url:              http://www.arunchinnachamy.com
+
+
+# Jekyll configuration
+
+permalink:   /:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+
+# Site owner
+owner:
+  name: Arun Chinnachamy
+  avatar: bio-photo.jpg
+  bio: "I am a chemical Engineer from BITS-Pilani. Right now, I work as Technology Lead at MySmartPrice. This is just a place where I write about the things I work and think."
+  email: arun.chinnachamy [at] gmail.com
+  disqus-shortname: arunchinnachamy
+  twitter: arunchinnachamy
+  facebook: arunchinnachamy
+  google:
+    plus: #username
+    analytics: UA-30308890-1
+    verify: 3ixncYOaUXe70dc8BOXxkdnyXOrwoIVjISDiZPxEr4E
+    ad-client: 
+    ad-slot: 
+  bing-verify: 
+  github: arunchinnachamy
+  stackoverflow: #http://stackoverflow.com/users/123456/username
+  linkedin: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
