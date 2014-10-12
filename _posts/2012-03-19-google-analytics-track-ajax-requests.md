@@ -8,6 +8,7 @@ comments: true
 Almost everyone uses Google Analytics. It is an amazing tool that has revolutionized web statistics.
 The Code provided by Google when we sign up is enough to track all standard sites.
 
+{% highlight js %}
     <script type="text/javascript">
     var _gaq = _gaq || [];  
     _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']); // your ID/profile  
@@ -18,6 +19,7 @@ The Code provided by Google when we sign up is enough to track all standard site
                  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  
                  })();
     </script>
+{% endhighlight %}
 
 Why do we need more than this? There are this growing category of sites which are strongly dependent on loveliness of Ajax and elegance of Javascript. The code above make it impossible to track Ajax and Javascript events in Google Analytics. So how to track Ajax Requests and Javascript Actions through Google Analytics?
 
@@ -33,12 +35,16 @@ Lets consider the case when you want to record number of times a particular Java
 
 In order to trigger an event on the click event on Images, we need to add the following code.
 
+{% highlight js %}
     onClick="_gaq.push(['_trackEvent', 'Images', 'Click', 'BirthDay Picture']);"
+{% endhighlight %}
 
 Here the category name is Images, the event Action is Click and the optional Label is BirthDay Picture.
 Or in case you want to track how many AJAX request has been processed with specific parameters.
 
+{% highlight js %}
     _gaq.push(['_trackEvent','AJAX','Request',$Parameters]);
+{% endhighlight %}
 
 The data will be available in Google Analytics within 24 hours. This way, we can completely track ajax requests in Google analytics and Google Analytics event tracking can help you monitor user activity at a deeper level than standard page views by allowing you to track AJAX requests and Javascript Actions. More detailed information and examples can be found in [Google Documentation](http://code.google.com/apis/analytics/docs/tracking/eventTrackerGuide.html){:target="_blank"}.
 

@@ -7,7 +7,7 @@ comments: true
 
 How to check PHP version, there are two easy ways to do this depending on what kind of access you have to the server.
 
-- If you have SSH terminal access to the machine, type the following to know the PHP Version.
+If you have SSH terminal access to the machine, type the following to know the PHP Version.
     
     php -v
 
@@ -19,7 +19,7 @@ This output the following in my mac.
 
 Here the PHP version is 5.3.8
 
-- In case you have a hosting service who does not provide SSH access to the machine, you can write a small PHP file with following text and save it as version.php
+In case you have a hosting service who does not provide SSH access to the machine, you can write a small PHP file with following text and save it as version.php
 
     <?php
     phpinfo();

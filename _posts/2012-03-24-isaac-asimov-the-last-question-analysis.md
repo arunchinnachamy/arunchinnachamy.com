@@ -6,8 +6,6 @@ comments: true
 ---
 Recently I came across a short story, The Last Question by Isaac Asimov. It is the favorite short story of Isaac Asimov himself. It was worth a read. So here is Isaac Asimov The Last Question Analysis.
 
-<img title="The Last Question Analysis" src="/public/images/asimov-the-last-question-244x300.jpg" alt="Isaac Asimov The Last Question Cover" width="180" height="200" style="float:left; padding-right:20px" >
-
 The story is interesting and enters the black hole of Physics and Religion simultaneously. It is about _“How mankind will evolve, pioneer in space travel and set foot in all the distant Galaxies with the help of Analog Computers (AC) like Multivac, Microvac, Galactic AC, Universal AC, Cosmic AC and AC” but still be daunted by the Question”_.
 
 In addition, the courage to publish this story (along with his other works) in the era in which it was written, is astounding. It is totally blasphemous, and perfect in every regard.

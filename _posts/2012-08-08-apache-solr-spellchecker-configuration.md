@@ -23,6 +23,7 @@ There are more than one way to implement the spell checker in SOLR. The importan
 ##### Index Based Spell checking in Solr
 
 I find this to be very effective and useful. Solr uses one of the configured field in the indexed document as Dictionary input and uses it for spell suggestions. The configuration is simple and requires very less effort.
+
 <pre lang="xml" escaped="true">&lt;searchComponent name="spellcheck" class="solr.SpellCheckComponent"&gt;
    &lt;str name="queryAnalyzerFieldType"&gt;string&lt;/str&gt; &lt;!-- Replace with Field Type of your schema --&gt;
    &lt;lst name="spellchecker"&gt;
@@ -49,9 +50,11 @@ I find this to be very effective and useful. Solr uses one of the configured fie
        &lt;str name="spellcheckIndexDir"&gt;./spellchecker&lt;/str&gt;
    &lt;/lst&gt;
 &lt;/searchComponent&gt;</pre>
+
 The queryAnalyzerFieldType in the above configuration is important. Make sure the field _productname_spell_ is of same type and the way you configure Analyzers and filters in that field type defines what goes inside the spell check dictionary.
 
 Now we need to setup the spell checker request handler which will be serving all the queries, create a new request handler in solrconfig.xml as described below. There is a good chance that you might need to change the values based on your requirement. If you looking forward to use the file based spell checker, just replace the _spellcheck.dictionary_ with **file**.
+
 <pre lang="xml" escaped="true">&lt;requestHandler name="/spell" class="solr.SearchHandler" startup="lazy"&gt;
     &lt;lst name="defaults"&gt;
         &lt;str name="df"&gt;productname&lt;/str&gt; &lt;!--The default field for spell checking. --&gt;
@@ -69,8 +72,11 @@ Now we need to setup the spell checker request handler which will be serving all
      &lt;str&gt;spellcheck&lt;/str&gt;
  &lt;/arr&gt;
 &lt;/requestHandler&gt;</pre>
+
 Now reload the SOLR configuration of the core by visiting the URL,
+
 <pre>http://{SOLR IP}:{SOLR PORT}/solr/admin/cores?action=RELOAD&amp;core={CORE NAME}</pre>
+
 If you do not have multiple cores, just restart the tomcat service. If you know any better way to reload the configuration, please leave a comment.
 
 Once the reload/restart is completed without errors, index the documents and make sure the documents index without errors. If you are using mysql and not using dataimporthandler to import documents into SOLR, you should try [importing mysql into SOLR](http://www.arunchinnachamy.com/apache-solr-mysql-data-import/ "Apache SOLR – SOLR MySQL Data Import").
@@ -78,11 +84,16 @@ Once the reload/restart is completed without errors, index the documents and mak
 <span style="color: #ff0000;"></span>
 
 Now you can check the workings of Solr Spellchecker by visiting the url,
+
 <pre>http://{SOLR IP}:{SOLR PORT}/solr/{CORE NAME}/spell?spellcheck=true&amp;qt=spellchecker&amp;spellcheck.accuracy=0.8&amp;spellcheck.collate=true&amp;fl=*%2Cscore&amp;extendedResults=true+&amp;q={YOUR QUERY}</pre>
+
 In case you have single core, remove the CORE NAME from the URL. If you try to query with any wrong spelling, the SOLR returns a new section _spellcheck_ with the correct spelling.
 In my case, I have few words like Mobiles, Television, Phones, Books, Cameras etc indexed in SOLR. When i execute,
+
 <pre>http://{SOLR IP}:{SOLR PORT}/solr/{CORE NAME}/spell?spellcheck=true&amp;qt=spellchecker&amp;spellcheck.accuracy=0.8&amp;spellcheck.collate=true&amp;fl=*%2Cscore&amp;extendedResults=true+&amp;q=color teleision</pre>
+
 I get the following output with corrected spelling for television.
+
 <pre lang="xml" escaped="true">&lt;response&gt;
     &lt;lst name="responseHeader"&gt;
         &lt;int name="status"&gt;0&lt;/int&gt;
@@ -112,3 +123,4 @@ I get the following output with corrected spelling for television.
 Play around with field analyzers and filters to get the desired result and what you want to index. Visit solr [spellcheckcomponent WIKI page](http://wiki.apache.org/solr/SpellCheckComponent "Solr WIKI") for more configuration details. Visit my other articles on [SOLR Installation](http://www.arunchinnachamy.com/apache-solr-installation-and-configuration/ "The Seach Platform, Apache SOLR Installation and Configuration") and [SOLR DataImportHandler configuration](http://www.arunchinnachamy.com/apache-solr-mysql-data-import/ "Apache SOLR – SOLR MySQL Data Import").
 
 Leave a comment if you find this useful. If you come across any errors, paste the error. I will try my best to answer your queries. 
+
